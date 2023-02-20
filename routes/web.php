@@ -23,6 +23,8 @@ Route::get('/articles', [ArticleController::class, 'index']);
 
 Route::get('/article/{article:id}', [ArticleController::class, 'show']);
 
+Route::get('/article/create', [ArticleController::class, 'create']);
+
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
 Route::get('/restaurants/show/{restaurant:id}',[RestaurantController::class, 'show']);
