@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +15,7 @@ class RestaurantController extends Controller
      */
     public function index(): View
     {
-        return view('restaurants.index');
+        return view('restaurants.index', ['restaurants' => Restaurant::latest()->get()]);
     }
 
     /**
@@ -36,9 +37,9 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.ss
      */
-    public function show(string $id): View
+    public function show(Restaurant $restaurant): View
     {
-        return view('restaurants.show', ['id' => $id]);
+       return view('restaurants.show', ['restaurant' => $restaurant]);
     }
 
     /**
