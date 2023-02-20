@@ -6,15 +6,16 @@ use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(): View
     {
-        //
+        return view('articles.index', ['articles' => Article::latest()->get()]);
     }
 
     /**
@@ -36,9 +37,9 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article): Response
+    public function show(Article $article)
     {
-        //
+        return view('articles.single', ['article' => $article]);
     }
 
     /**
