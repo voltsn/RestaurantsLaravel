@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\RestaurantController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/articles', [ArticleController::class, 'index']);
+
+Route::get('/article/{article:id}', [ArticleController::class, 'show']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
