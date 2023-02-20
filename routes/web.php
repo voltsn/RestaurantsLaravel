@@ -25,6 +25,6 @@ Route::get('/article/{article:id}', [ArticleController::class, 'show']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
-Route::get('/restaurants/show/{id}',[RestaurantController::class, 'show']);
+Route::get('/restaurants/show/{restaurant:id}',[RestaurantController::class, 'show']);
 
 Route::get('/restaurants/create', [RestaurantController::class, 'create']);
