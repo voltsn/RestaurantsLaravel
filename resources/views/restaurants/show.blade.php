@@ -1,8 +1,11 @@
 @extends('layout.app')
 
-@section('title', 'Show restaurant')
+@section('title')
+    Restaurant | {{ $restaurant->name }}
+@endsection
 
 @section('content')
-    <h1>Single Restaurant page</h1>
-    <p>Currently displaying restaurant with an id of {{ $id }}</p>
+    <h1>{{ $restaurant->name }}</h1>
+    <p> {{ $restaurant->description }}</p>
+    <address>{{ $restaurant->address}},{{ $restaurant->zipCode }} {{ $restaurant->town }} {{ $restaurant->country }}</address>
 @endsection
