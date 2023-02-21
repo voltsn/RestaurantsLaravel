@@ -55,17 +55,26 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article): Response
+    public function edit(Article $article): View
     {
-        //
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article): RedirectResponse
+    public function update(CreatePostRequest $request, Article $article): RedirectResponse
     {
-        //
+        $request->validated();
+
+        // Update record
+        $article->title = $request['title'];
+        $article->content = $request['content'];
+        $article->author = $request['author'];
+
+        $article->save();
+
+        return redirect('/articles/edit/'.$article->id)->with('status', 'Article update sucesssfully');
     }
 
     /**
