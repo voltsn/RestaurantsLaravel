@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -29,9 +30,11 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CreatePostRequest $request): RedirectResponse
     {
-        //
+        $request->validate();
+
+        return redirect('/article/create')->with('status', 'Article created succesfully');
     }
 
     /**
