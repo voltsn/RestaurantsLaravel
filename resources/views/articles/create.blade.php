@@ -3,6 +3,18 @@
 @section('title', 'Articles | Create New Article')
 
 @section('content')
+    @if ($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+    @if (session('status'))
+        <div>{{ session('status') }}</div>
+    @endif
+
     <form method="POST" action="/article/create">
         @csrf
         <label for="title">Title of the article</label>
