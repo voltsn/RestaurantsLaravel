@@ -59,17 +59,30 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): Response
+    public function edit(Restaurant $restaurant): View
     {
-        //
+        return view('restaurants.edit', ['restaurant' => $restaurant]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(CreateRestaurantPostRequest $request, Restaurant $restaurant): RedirectResponse
     {
-        //
+        $request->validated();
+
+        // Update record in the database
+        $restaurant->name = $request['name'];
+        $restaurant->address = $request['address'];
+        $restaurant->zipCode = $request['zipCode'];
+        $restaurant->town = $request['town'];
+        $restaurant->country = $request['country'];
+        $restaurant->review = $request['review'];
+        $restaurant->description = $request['description'];
+
+        $restaurant->save();
+
+        return redirect('/restaurants/edit/'.$restaurant->id)->with('status', $restaurant->name.' updated successfully');
     }
 
     /**
