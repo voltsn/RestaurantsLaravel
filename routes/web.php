@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/article/create', [ArticleController::class, 'create']);
 Route::post('/article/create', [ArticleController::class, 'store']);
 
 Route::get('/article/{article:id}', [ArticleController::class, 'show']);
+
+Route::get('/articles/edit/{article:id}', [ArticleController::class, 'edit']);
+
+Route::patch('/articles/edit/{article:id}', [ArticleController::class, 'update']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
