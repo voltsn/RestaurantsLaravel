@@ -32,7 +32,14 @@ class ArticleController extends Controller
      */
     public function store(CreatePostRequest $request): RedirectResponse
     {
-        $request->validate();
+        $request->validated();
+        
+        // Insert into the database
+        Article::create([
+            'title' => $request['title'],
+            'content' => $request['content'],
+            'author' => $request['author'],
+        ]);
 
         return redirect('/article/create')->with('status', 'Article created succesfully');
     }
