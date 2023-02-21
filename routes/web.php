@@ -39,3 +39,7 @@ Route::get('/restaurants/show/{restaurant:id}',[RestaurantController::class, 'sh
 Route::get('/restaurants/create', [RestaurantController::class, 'create']);
 
 Route::post('/restaurants/create', [RestaurantController::class, 'store']);
+
+Route::get('/restaurants/edit/{restaurant:id}', [RestaurantController::class, 'edit']);
+
+Route::patch('/restaurants/edit/{restaurant:id}', [RestaurantController::class, 'update']);
